@@ -142,8 +142,42 @@ export const ListadoApp = () => {
 ```
 
 
+## Map 
+```js
+import { useState } from "react";
 
+const Items = ({ nombre, visto }) => {
+  return (
+    <li>
+      {nombre}
+      {visto ? " visto" : " por ver"}
+    </li>
+  );
+};
 
+export const ListadoApp = () => {
+  let listadoSecciones = [
+    { nombre: "instalaciones", visto: true },
+    { nombre: "Uso de Vit", visto: true },
+    { nombre: "Componentes", visto: true },
+    { nombre: "Variables", visto: true },
+    { nombre: "Eventos", visto: true },
+    { nombre: "useState", visto: true },
+    { nombre: "Redux", visto: false },
+    { nombre: "customHooks", visto: false },
+  ];
+  const [arreglo, setArreglo] = useState([listadoSecciones]);
+
+  return( 
+  <>
+  <h1>Listado de temas en el curso:</h1>
+  <ol>
+      {arreglo.map(item => <Items key={item.nombre} nombre={item.nombre} visto={item.visto}></Items>)}
+  </ol>
+  </>
+  )
+}
+```
 
 
 
