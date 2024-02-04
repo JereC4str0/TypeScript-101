@@ -348,3 +348,91 @@ export const AgregarTarea = ({agregarTarea}) => {
 
 ```
 
+### hijo a padre
+
+```js
+import { useState } from "react";
+import { AgregarTarea } from "./AgregarTarea";
+
+const Items = ({ nombre, visto }) => {
+  return (
+    <li>
+      {nombre}
+      {visto ? " visto" : " por ver"}
+    </li>
+  );
+};
+
+const AddTask = () => {
+  setArreglo([...arreglo, { nombre: "nuevo nombre", visto: false }]);
+};
+
+const onAgregarTarea = (val) => {
+  let valor = val.trim();
+  if (val < 1) return;
+  const envio = {
+    id: arreglo.length + 1,
+    nombre: valor,
+    visto: false,
+  };
+  setArreglo([...arreglo, envio]);
+};
+
+export const ListadoApp = () => {
+  let listadoSecciones = [
+    { id: 1, nombre: "instalaciones", visto: true },
+    { id: 2, nombre: "Uso de Vit", visto: true },
+    { id: 3, nombre: "Componentes", visto: true },
+    { id: 4, nombre: "Variables", visto: true },
+    { id: 5, nombre: "Eventos", visto: true },
+    { id: 6, nombre: "useState", visto: true },
+    { id: 7, nombre: "Redux", visto: false },
+    { id: 8, nombre: "customHooks", visto: false },
+  ];
+  const [arreglo, setArreglo] = useState([listadoSecciones]);
+
+  return (
+    <>
+      <h1>Listado de temas en el curso:</h1>
+      <AgregarTarea agregarTarea={onAgregarTarea}></AgregarTarea>
+      <ol>
+        {arreglo.map((item) => (
+          <Items key={item.id} nombre={item.nombre} visto={item.visto}></Items>
+        ))}
+      </ol>
+
+      <button onClick={() => AddTask()}>Agregar Tarea</button>
+    </>
+  );
+};
+
+```
+
+```js
+import React from "react";
+import { useState } from "react";
+
+export const AgregarTarea = ({agregarTarea}) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const onInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const onSubmit = (event) => {
+    agregarTarea(inputValue)
+  };
+
+  return (
+    <form onSubmit={onSubmit}>
+      <input
+        type="text"
+        placeholder="Ingresar Tarea Nueva"
+        value={inputValue}
+        onChange={onInputChange}
+      />
+    </form>
+  );
+};
+  
+```
