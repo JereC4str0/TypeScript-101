@@ -102,5 +102,49 @@ export const ContadorApp = ({value}) => {
 };
 
 ```
+## Operadores Ternarios 
+si visto es true entonces renderiza 'visto' else 'por ver'
+
+tambien se puede usar  
+
+```js
+visto  &&  'visto' 
+```
+
+si se cumple la primera entonces pasa a la segunda condicion
+
+```js
+const Items = ({nombre,visto})=>{
+  return (
+  <li>{nombre}
+      {visto ? ' visto': ' por ver' }</li>
+  )
+}
+
+
+export const ListadoApp = () => {
+  return(
+    <>
+    <h1>Listado de Temas de Curso</h1>
+    <ol>
+      <Items nombre = "Instalaciones" visto={true}></Items>
+      <Items nombre = "Uso de vit" visto={true}></Items>
+      <Items nombre = "Componentes" visto={true}></Items>
+      <Items nombre = "Variables" visto={true}></Items>
+      <Items nombre = "Eventos" visto={true}></Items>
+      <Items nombre = "useState" visto={true}></Items>
+      <Items nombre = "Redux" visto={false}></Items>
+      <Items nombre = "customHooks" visto={false}></Items>
+    </ol>
+  )
+}
+    </>
+```
+
+
+
+
+
+
 
 
