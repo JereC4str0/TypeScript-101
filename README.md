@@ -436,3 +436,142 @@ export const AgregarTarea = ({agregarTarea}) => {
 };
   
 ```
+
+## UseEffect y Fetch
+
+de esta forma se traerian los datos al comienzo
+```js
+import { useEffect, useState } from "react";
+
+export const UsersApp = () => {
+   const [users, setUsers] = useState([]);
+  const fetchUsers = async () => {
+   
+
+    try {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/users"
+      );
+      const data = await response.json();
+      setUsers(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  return (
+    <>
+      <h1>Lista de usuarios:</h1>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </>
+  );
+};
+
+```
+
+### Para hacer la call con una llamada se hace de la siguiente forma:
+```js
+import { useEffect, useState } from "react";
+
+export const UsersApp = () => {
+  const [users, setUsers] = useState([]);
+  const fetchUsers = async () => {
+    try {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/users"
+      );
+      const data = await response.json();
+      setUsers(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleFetch = () => {
+    fetchUsers()
+  }
+
+
+  return (
+    <>
+      <h1>Lista de usuarios:</h1>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+      <button onClick={handleFetch}>llamar a la API</button>
+    </>
+  );
+};
+
+```
+_se deja de utilizar useEffect_
+
+### uso de useEffect con una dependencia puntual :
+```js
+import { useEffect, useState } from "react";
+
+export const UserList = (endpoint) => {
+  const [users, setUsers] = useState([]);
+  const fetchUsers = async () => {
+    try {
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/${endpoint}`
+      );
+      const data = await response.json();
+      setUsers(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(()=>{
+    fetchUsers()
+  }, [endpoint])
+
+  return (
+    <>
+      <ul>
+        {endpoint = 'users' ? users.map(item => <li key={item.id}>{item.name}</li>) 
+        : users.map(item => <li key={item.id}>{item.body}</li>)}
+        
+      </ul>
+    </>
+  );
+};
+
+```
+
+```js
+
+import { useState } from "react";
+import { UserList } from "./UserList";
+
+export const UsersApp = () => {
+
+  const [endpoint,setEndPoint] = useState('users')
+
+  const handleFetch = () => {
+    setEndPoint('comments')
+  }
+
+
+  return (
+    <>
+      <h1>Lista de usuarios:</h1>
+      <UserList endpoint={endpoint}></UserList>
+      <button onClick={handleFetch}>llamar a la API</button>
+    </>
+  );
+};
+
+```
