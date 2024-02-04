@@ -42,3 +42,34 @@ PrimerComponente.defaultProps = {
   subtitulo: 13
 }
 ```
+## ¿ Que son los eventos ? 
+Los eventos en React son mecanismos por los cuales los componentes pueden reaccionar a la interaccion del usuario.
+<br>
+[Lista de eventos disponibles](https://es.legacy.reactjs.org/docs/events.html)
+
+
+
+```js
+**export const ContadorApp = (value) => {
+  const handleClick = (event) => {
+    value += 1
+    console.log(event);
+  }
+
+  }
+
+  return (
+    <>
+      <h1>Contador: </h1>
+      <p>{value}</p>
+      <button onClick={handleClick}>Soy un boton</button>
+    </>
+  );
+};
+
+```
+Si ejecutamos el codigo de ejemplo podemos ver que por consola si cambia el valor pero en la pagina web no se ven reflejados, para hacer que se cambie el valor en el DOM se debe usar un estado
+
+## ¿ Que son los estados? 
+
+
