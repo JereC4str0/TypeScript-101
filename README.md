@@ -230,5 +230,36 @@ Es un enfoque de diseño de las interfaces de usuario la cual se basa en la crea
 La idea es hacer componentes pequeños e indivicibles(botones, inputs, etc) e ir haciendo moleculas, organizmos, etc
 [MAS INFORMACION](https://bradfrost.com/blog/post/atomic-web-design/)
 
+## ClassName
+ es una propiedad de js que es utilizada para obtener u asignar la clase de un elemento.
 
+ ## Formulario 
+ componente para crear un input y guardar los datos.
+
+ ```js
+import React from "react";
+import { useState } from "react";
+
+const [inputValue, setInputValue] = useState("");
+const onInputChange = (event) => {
+  setInputValue(event.target.value);
+};
+
+const onSubmit = (event) => {
+  event.preventDefault() // no se recarga la pagina al mandar el  input
+}
+
+export const AgregarTarea = () => {
+  return (
+    <form onSubmit={onSubmit}>
+      <input
+        type="text"
+        placeholder="Ingresar Tarea Nueva"
+        value={inputValue}
+        onChange={onInputChange}
+      />
+    </form>
+  );
+};
+```
 
