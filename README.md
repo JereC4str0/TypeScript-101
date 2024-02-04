@@ -50,7 +50,7 @@ Los eventos en React son mecanismos por los cuales los componentes pueden reacci
 
 
 ```js
-**export const ContadorApp = (value) => {
+export const ContadorApp = (value) => {
   const handleClick = (event) => {
     value += 1
     console.log(event);
@@ -70,6 +70,37 @@ Los eventos en React son mecanismos por los cuales los componentes pueden reacci
 ```
 Si ejecutamos el codigo de ejemplo podemos ver que por consola si cambia el valor pero en la pagina web no se ven reflejados, para hacer que se cambie el valor en el DOM se debe usar un estado
 
-## ¿ Que son los estados? 
+## ¿ Que son los Hooks?
+Es una funcion especial que nos permite utilizar una funcion de react en un componente de tipo funcion fueron introducidos en react 16.8 para poder manejar el estado y otras caracteristicas sin la necesidad de utilizar componentes de tipo clase.
+
+## ¿Que es el estado en React?
+Es un objeto que contiene datos y representa la informacion que una interfaz de usuario necesita para poder renderizarse y funcionar correctamente.
+El estado es mutable y tiene todos los datos que necesita un componente para funcionar de forma correcta y mutar si asi lo desea
+
+se puede modificar el estado a travez de los hooks o con con un constructor en un componente de tipo clase. 
+
+
+
+```js
+
+import { useState } from "react";
+
+export const ContadorApp = ({value}) => {
+  const [contador, setContador] = useState(value)
+  const handleClick = () => {
+    setContador(contador + 1)
+    console.log(contador);
+  };
+
+  return (
+    <>
+      <h1>Contador: </h1>
+      <p>{contador}</p>
+      <button onClick={handleClick}>Soy un boton</button>
+    </>
+  );
+};
+
+```
 
 
