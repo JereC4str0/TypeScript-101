@@ -263,3 +263,88 @@ export const AgregarTarea = () => {
 };
 ```
 
+## Comunicacion entre componentes
+### Padre a hijo
+en este ejemplo se le pasa como prop al hijo una funcion llamada agregarTarea, que es la que modifica el listado del padre,
+el hijo recibe esa agregarTarea y agrega la tarea nueva pasandole el objeto de la nueva tarea usando el spread operator
+
+
+ ```js
+import { useState } from "react";
+import { AgregarTarea } from "./AgregarTarea";
+
+const Items = ({ nombre, visto }) => {
+  return (
+    <li>
+      {nombre}
+      {visto ? " visto" : " por ver"}
+    </li>
+  );
+};
+
+const AddTask = () => {
+  setArreglo([...arreglo, {nombre: "nuevo nombre", visto: false}])
+}
+
+export const ListadoApp = () => {
+  let listadoSecciones = [
+    { nombre: "instalaciones", visto: true },
+    { nombre: "Uso de Vit", visto: true },
+    { nombre: "Componentes", visto: true },
+    { nombre: "Variables", visto: true },
+    { nombre: "Eventos", visto: true },
+    { nombre: "useState", visto: true },
+    { nombre: "Redux", visto: false },
+    { nombre: "customHooks", visto: false },
+  ];
+  const [arreglo, setArreglo] = useState([listadoSecciones]);
+
+  return( 
+  <>
+  <h1>Listado de temas en el curso:</h1>
+  <AgregarTarea agregarTarea = {setArreglo}></AgregarTarea>
+  <ol>
+      {arreglo.map(item => <Items key={item.nombre} nombre={item.nombre} visto={item.visto}></Items>)}
+  </ol>
+
+  <button onClick={() => AddTask()}>Agregar Tarea</button>
+  </>
+  )
+}
+
+```
+
+ ```js
+import React from "react";
+import { useState } from "react";
+
+export const AgregarTarea = ({agregarTarea}) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const onInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const onSubmit = (event) => {
+    const envio = {
+      nombre: inputValue,
+      visto: false
+    }
+    event.preventDefault(); // no se recarga la pagina al mandar el  input
+    agregarTarea(tareas => [...tareas, envio])
+  };
+
+  return (
+    <form onSubmit={onSubmit}>
+      <input
+        type="text"
+        placeholder="Ingresar Tarea Nueva"
+        value={inputValue}
+        onChange={onInputChange}
+      />
+    </form>
+  );
+};
+
+```
+
