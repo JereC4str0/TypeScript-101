@@ -177,8 +177,58 @@ export const ListadoApp = () => {
   </>
   )
 }
+}
+
+```
+### como ingresar un elemento a la lista ?
+Usando spread operator:
+```js
+import { useState } from "react";
+
+const Items = ({ nombre, visto }) => {
+  return (
+    <li>
+      {nombre}
+      {visto ? " visto" : " por ver"}
+    </li>
+  );
+};
+
+const AddTask = () => {
+  setArreglo([...arreglo, {nombre: "nuevo nombre", visto: false}])
+}
+
+export const ListadoApp = () => {
+  let listadoSecciones = [
+    { nombre: "instalaciones", visto: true },
+    { nombre: "Uso de Vit", visto: true },
+    { nombre: "Componentes", visto: true },
+    { nombre: "Variables", visto: true },
+    { nombre: "Eventos", visto: true },
+    { nombre: "useState", visto: true },
+    { nombre: "Redux", visto: false },
+    { nombre: "customHooks", visto: false },
+  ];
+  const [arreglo, setArreglo] = useState([listadoSecciones]);
+
+  return( 
+  <>
+  <h1>Listado de temas en el curso:</h1>
+  <ol>
+      {arreglo.map(item => <Items key={item.nombre} nombre={item.nombre} visto={item.visto}></Items>)}
+  </ol>
+  <button onClick={() => AddTask()}>Agregar Tarea</button>
+  </>
+  )
+}
+
 ```
 
+
+## ¿ Que es el Atomic Design? 
+Es un enfoque de diseño de las interfaces de usuario la cual se basa en la creacion y organizacion de componentes reutilizables
+La idea es hacer componentes pequeños e indivicibles(botones, inputs, etc) e ir haciendo moleculas, organizmos, etc
+[MAS INFORMACION](https://bradfrost.com/blog/post/atomic-web-design/)
 
 
 
