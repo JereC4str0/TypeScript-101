@@ -822,4 +822,43 @@ export const UsuariosComponent = () => {
     </>
   );
 };
+```
+
+## Explicación del hook useRef en React
+
+El hook `useRef` en React es una herramienta que te permite crear una referencia mutable que apunta a un elemento del DOM. Esta referencia se mantiene constante a lo largo del ciclo de vida del componente, pero puedes actualizar su valor sin causar una nueva renderización del componente.
+
+### Uso básico:
+
+Supongamos que tenemos un componente de React que tiene un input y un botón:
+
+```jsx
+import React, { useRef } from 'react';
+
+function MyComponent() {
+  const inputRef = useRef(null);
+
+  const handleClick = () => {
+    // Acción que queremos realizar cuando se hace clic en el botón
+    inputRef.current.focus(); // Enfocamos el input
+  };
+
+  return (
+    <div>
+      <input ref={inputRef} type="text" />
+      <button onClick={handleClick}>Enfocar Input</button>
+    </div>
+  );
+}
+
+export default MyComponent;
+```
+
+En este ejemplo, hemos creado una referencia llamada inputRef utilizando el hook useRef. Luego, hemos asignado esta referencia al input usando el atributo ref. Ahora, podemos acceder al input a través de inputRef.current.
+
+Cuando se hace clic en el botón, llamamos a la función handleClick. Dentro de esta función, usamos inputRef.current para acceder al input y enfocarlo utilizando el método focus().
+
+Esencialmente, useRef nos permite mantener una referencia persistente a un elemento del DOM y acceder a él cuando sea necesario sin tener que buscarlo repetidamente en el DOM. Esto hace que trabajar con elementos del DOM en React sea más eficiente y sencillo.
+
+
 
