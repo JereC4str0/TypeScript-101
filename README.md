@@ -705,4 +705,121 @@ export const FormularioComponent = () => {
 };
 ```
 
+### Fetch con Hook
+
+## `useFetch`
+
+Este componente es una función personalizada diseñada para manejar solicitudes de red en aplicaciones React utilizando los hooks `useEffect` y `useState`. Su objetivo principal es simplificar la obtención de datos de una URL específica a través de una solicitud `fetch` y manejar el estado de carga y posibles errores asociados.
+
+### Uso
+
+```javascript
+import { useEffect, useState } from "react";
+
+export const useFetch = (url) => {
+  const [state, setState] = useState({
+    data: null,
+    isLoading: true,
+    errors: null,
+  });
+
+  const getFetch = async () => {
+    if (!url) return;
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setState({
+        data,
+        isLoading: false,
+        errors: null,
+      });
+    } catch (error) {
+      setState({
+        data: null,
+        isLoading: false,
+        errors: error,
+      });
+    }
+  };
+
+  useEffect(() => {
+    getFetch();
+  }, [url]);
+
+  return state; 
+};
+```
+## Funcionamiento
+
+useState: Define un estado inicial con tres propiedades: data (los datos obtenidos de la solicitud), isLoading (un indicador booleano que muestra si la solicitud está en curso) y errors (los posibles errores ocurridos durante la solicitud).
+
+getFetch: Una función asíncrona que realiza la solicitud a la URL proporcionada. Si la URL no está definida, la función sale temprano sin hacer nada. Si la solicitud tiene éxito, actualiza el estado con los datos obtenidos y marca isLoading como false. Si hay errores durante la solicitud, actualiza el estado con null para los datos, marca isLoading como false y almacena el error en la propiedad errors.
+
+useEffect: Se utiliza para ejecutar la función getFetch cuando cambia la URL proporcionada. Esto asegura que la solicitud se realice cada vez que la URL cambie, por ejemplo, cuando se actualiza un enlace.
+
+Retorno de estado: Devuelve el estado actualizado, que incluye los datos obtenidos de la solicitud (o null si no hay datos), un indicador de carga (isLoading) y cualquier error que pueda haber ocurrido durante la solicitud.
+
+### Componente `UsuariosComponent`
+
+Este componente es un componente funcional de React que muestra una lista de usuarios obtenidos de una API utilizando el hook personalizado `useFetch`. A continuación, se proporciona una explicación de su funcionamiento:
+
+#### Uso de `useFetch`
+
+- El componente utiliza el hook personalizado `useFetch` para realizar una solicitud a la API `https://jsonplaceholder.typicode.com/users`. Este hook devuelve un objeto que contiene `data` (los datos obtenidos de la solicitud), `isLoading` (un indicador booleano que muestra si la solicitud está en curso) y `errors` (los posibles errores ocurridos durante la solicitud).
+
+#### Renderizado Condicional
+
+- Muestra un título `<h1>` indicando "Lista de Usuarios".
+- Utiliza un operador ternario para renderizar condicionalmente:
+  - Si `isLoading` es verdadero, muestra un mensaje "Cargando...".
+  - Si `isLoading` es falso, muestra una tabla (`<table>`) para visualizar los usuarios.
+  
+#### Mapeo de Datos
+
+- Si la carga no está en curso (`isLoading` es falso), itera sobre los datos (`data`) obtenidos de la solicitud utilizando el método `map()`.
+- Para cada usuario en los datos, crea una fila (`<tr>`) en la tabla con su correspondiente información de usuario: id, nombre, correo electrónico y sitio web.
+
+#### Componente Completo
+
+```jsx
+import { useState } from "react";
+import { useFetch } from "../hooks/useFetch";
+
+export const UsuariosComponent = () => {
+  const { data, isLoading, errors } = useFetch(
+    "https://jsonplaceholder.typicode.com/users"
+  );
+
+  return (
+    <>
+      <h1>Lista de Usuarios</h1>
+      {isLoading ? (
+        <h4>Cargando...</h4>
+      ) : (
+        <table className="table table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Correo Electrónico</th>
+              <th scope="col">Sitio Web</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map(user => {
+              return (
+                <tr key={user.id}>
+                  <th scope="row">{user.id}</th>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>{user.website}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      )}
+    </>
+  );
+};
 
