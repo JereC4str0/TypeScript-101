@@ -625,3 +625,84 @@ export const ContadorComponent = () => {
 }
 ```
 
+### Formulario con Hooks
+
+El componente FormularioComponent es una función de React que gestiona un formulario. Utiliza el hook useState para definir el estado del formulario, que incluye tres campos: userName, email y password. Cada campo se inicializa con un valor predeterminado.
+
+La función onInputChange se encarga de actualizar el estado del formulario cuando cambia el valor de un campo de entrada. Recibe un evento como parámetro, del cual extrae el nombre (name) y el valor (value) del campo modificado. Luego, utiliza el spread operator (...) para actualizar el estado del formulario, manteniendo los valores anteriores y sobrescribiendo el campo modificado con su nuevo valor.
+
+El componente renderiza un formulario HTML con tres campos de entrada (input). Cada campo está vinculado al estado del formulario a través de sus propiedades value y onChange, lo que permite que los campos se actualicen dinámicamente según el estado actual del formulario.
+
+Además, se define una función handleSubmit que se activa cuando se envía el formulario. Esta función, que también recibe un evento como parámetro, previene el comportamiento predeterminado de enviar el formulario y, en su lugar, simplemente imprime los datos del formulario en la consola del navegador.
+
+
+```js
+import React, { useState } from "react";
+
+export const FormularioComponent = () => {
+  const [formState, setFormState] = useState({
+    userName: "",
+    email: "",
+    password: "",
+  });
+
+  const { userName, email, password } = formState;
+
+  const onInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormState({ ...formState, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Aquí puedes hacer lo que necesites con los datos del formulario, como enviarlos a un servidor
+    console.log(formState);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label htmlFor="userName">User Name</label>
+        <input
+          type="text"
+          className="form-control"
+          id="userName"
+          name="userName"
+          placeholder="Enter your username"
+          value={userName}
+          onChange={onInputChange}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="email">Email Address</label>
+        <input
+          type="email"
+          className="form-control"
+          id="email"
+          name="email"
+          placeholder="Enter email"
+          value={email}
+          onChange={onInputChange}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          className="form-control"
+          id="password"
+          name="password"
+          placeholder="Password"
+          value={password}
+          onChange={onInputChange}
+        />
+      </div>
+      <button type="submit" className="btn btn-primary">
+        Submit
+      </button>
+    </form>
+  );
+};
+```
+
+
