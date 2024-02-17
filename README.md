@@ -861,4 +861,35 @@ Cuando se hace clic en el botón, llamamos a la función handleClick. Dentro de 
 Esencialmente, useRef nos permite mantener una referencia persistente a un elemento del DOM y acceder a él cuando sea necesario sin tener que buscarlo repetidamente en el DOM. Esto hace que trabajar con elementos del DOM en React sea más eficiente y sencillo.
 
 
+## Explicación del hook useMemo en React
+
+El hook `useMemo` en React es una herramienta que te permite memorizar el resultado de una función costosa en términos de cálculo, de modo que solo se recalcula cuando alguna de sus dependencias cambia. Esto ayuda a mejorar el rendimiento de tu aplicación al evitar cálculos innecesarios.
+
+### Uso básico:
+
+Supongamos que tenemos un componente de React que realiza un cálculo costoso cada vez que se renderiza:
+
+```jsx
+import React, { useState, useMemo } from 'react';
+
+function MyComponent({ list }) {
+  const [filter, setFilter] = useState('');
+
+  const filteredList = useMemo(() => {
+    return list.filter(item => item.includes(filter));
+  }, [list, filter]);
+
+  return (
+    <div>
+      <input value={filter} onChange={e => setFilter(e.target.value)} />
+      <ul>
+        {filteredList.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default MyComponent;
 
