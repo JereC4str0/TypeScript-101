@@ -938,3 +938,59 @@ En este ejemplo, useCallback se utiliza para memorizar la función handleItemCli
 useCallback es especialmente útil cuando pasas funciones como props a componentes hijos y quieres evitar renderizaciones innecesarias. Al memorizar la función callback, React puede optimizar el rendimiento de tu aplicación al evitar la creación de nuevas instancias de funciones en cada renderizado.
 
 Es importante tener en cuenta que useCallback debe usarse con moderación y solo cuando sea necesario, ya que puede complicar el código si se usa en exceso. Utiliza useCallback cuando necesites optimizar el rendimiento de tu aplicación al evitar la creación de funciones innecesarias en cada renderizado.
+
+## Reducer 
+
+un "reducer" es una función pura que toma el estado actual y una acción como argumentos y devuelve un nuevo estado. Los reducers son una parte fundamental de la gestión de estado en React, especialmente cuando se utiliza el contexto y el gancho useReducer.
+
+Los reducers siguen el patrón de diseño de Redux, que es una biblioteca de gestión de estado para aplicaciones JavaScript. En Redux, los reducers son responsables de especificar cómo cambia el estado de la aplicación en respuesta a las acciones emitidas por los componentes.
+
+En React, el gancho useReducer proporciona una forma de gestionar el estado de manera más compleja y estructurada que simplemente utilizando el gancho useState. useReducer se puede utilizar para manejar estados más complejos o cuando se tienen múltiples estados que dependen entre sí.
+
+
+### ReducerComponent
+
+```jsx
+import { useState } from "react";
+// estado inicial
+const initialState = [
+  {
+    id: 1,
+    tareas: "explicar reducer",
+    finalizada: false,
+  },
+];
+
+const nuevaTarea = {
+  id: 2,
+  tarea: " Explicar useReducer",
+  finalizada: false,
+};
+
+// accion
+const agregarTarea = {
+  type: "[TAREAS] Agregar Tarea",
+  payload: nuevaTarea,
+};
+
+// reducer
+const tareaReducer = (state = initialState, action = {}) => {
+  if (action.type === "[TAREAS] Agregar Tarea") {
+    return [...state, action.payload];
+  }
+  return state;
+};
+
+
+console.log(tareaReducer(initialState, agregarTarea));
+
+export const ReducerComponent = () => {
+  return (
+    <>
+      <div>Lista de tareas</div>
+    </>
+  );
+};
+
+```
+
