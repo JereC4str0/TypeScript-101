@@ -993,4 +993,75 @@ export const ReducerComponent = () => {
 };
 
 ```
+# Explicación de `useReducer` en React
+
+`useReducer` es un hook en React que se utiliza para manejar estados complejos de componentes. A menudo se prefiere cuando el estado del componente implica transiciones complejas de un estado a otro. `useReducer` es similar a `useState`, pero en lugar de manejar un único estado, `useReducer` administra un estado basado en una función reductora.
+
+## Sintaxis
+
+La sintaxis básica de `useReducer` es la siguiente:
+
+```javascript
+const [state, dispatch] = useReducer(reducer, initialState);
+```
+
+## Uso de `useReducer` en React
+
+- **state:** Representa el estado actual del componente.
+- **dispatch:** Es una función utilizada para enviar acciones al reductor.
+- **reducer:** Es una función que recibe el estado actual y una acción, y devuelve el nuevo estado. La acción describe qué tipo de cambio se debe realizar en el estado.
+- **initialState:** Es el estado inicial del componente.
+
+### Uso
+
+1. **Definir el Reductor (reducer):** El reductor es una función que especifica cómo el estado del componente debe cambiar en respuesta a una acción. Toma el estado actual y una acción como argumentos y devuelve el nuevo estado.
+
+2. **Definir el Estado Inicial (initialState):** Esto es lo que se utilizará como estado inicial del componente.
+
+3. **Usar `useReducer`:** Llama a `useReducer` en tu componente para inicializar el estado y obtener la función `dispatch` para enviar acciones al reductor.
+
+4. **Enviar Acciones al Reductor:** Utiliza la función `dispatch` para enviar acciones al reductor. Una acción es simplemente un objeto que describe el tipo de cambio que deseas realizar en el estado.
+
+5. **El Reductor Actualiza el Estado:** El reductor recibe la acción y actualiza el estado del componente en función de esa acción.
+
+### Ventajas
+
+- **Manejo de Estados Complejos:** `useReducer` es útil para manejar estados complejos o cuando el estado depende del estado anterior o de varias acciones.
+- **Centralización del Lógica de Estado:** Puede ayudar a centralizar la lógica de actualización del estado en un solo lugar, lo que facilita la comprensión y el mantenimiento del código.
+
+### Ejemplo
+
+```jsx
+```javascript
+import React, { useReducer } from 'react';
+
+// Reductor
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { count: state.count + 1 };
+    case 'DECREMENT':
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+};
+
+// Componente
+const Counter = () => {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  return (
+    <>
+      Count: {state.count}
+      <button onClick={() => dispatch({ type: 'INCREMENT' })}>Increment</button>
+      <button onClick={() => dispatch({ type: 'DECREMENT' })}>Decrement</button>
+    </>
+  );
+};
+
+export default Counter;
+
+```
+
 
