@@ -893,3 +893,48 @@ function MyComponent({ list }) {
 
 export default MyComponent;
 
+```
+## Explicación del hook useCallback en React
+
+El hook `useCallback` en React es una herramienta que te permite memorizar una versión memorizada de una función callback. Esto es útil cuando pasas funciones a componentes hijos y deseas evitar que esas funciones se creen nuevamente en cada renderizado, lo que puede causar renderizaciones innecesarias en los componentes hijos.
+
+### Uso básico:
+
+Supongamos que tenemos un componente de React que renderiza una lista y desea pasar una función de manejo de clic a cada elemento de la lista:
+
+```jsx
+import React, { useState, useCallback } from 'react';
+
+function ListItem({ item, onClick }) {
+  return <li onClick={onClick}>{item}</li>;
+}
+
+function MyComponent({ items }) {
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleItemClick = useCallback(
+    item => {
+      setSelectedItem(item);
+    },
+    []
+  );
+
+  return (
+    <ul>
+      {items.map((item, index) => (
+        <ListItem key={index} item={item} onClick={() => handleItemClick(item)} />
+      ))}
+      <p>Item seleccionado: {selectedItem}</p>
+    </ul>
+  );
+}
+
+export default MyComponent;
+
+```
+
+En este ejemplo, useCallback se utiliza para memorizar la función handleItemClick. La función handleItemClick se crea solo una vez, ya que no tiene dependencias, y se pasa como una función de manejo de clic a cada ListItem. Esto evita que se cree una nueva función en cada renderizado de MyComponent, lo que puede causar renderizaciones innecesarias en los componentes hijos.
+
+useCallback es especialmente útil cuando pasas funciones como props a componentes hijos y quieres evitar renderizaciones innecesarias. Al memorizar la función callback, React puede optimizar el rendimiento de tu aplicación al evitar la creación de nuevas instancias de funciones en cada renderizado.
+
+Es importante tener en cuenta que useCallback debe usarse con moderación y solo cuando sea necesario, ya que puede complicar el código si se usa en exceso. Utiliza useCallback cuando necesites optimizar el rendimiento de tu aplicación al evitar la creación de funciones innecesarias en cada renderizado.
