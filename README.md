@@ -1063,5 +1063,42 @@ const Counter = () => {
 export default Counter;
 
 ```
+### React DOM en React
+
+React DOM es una biblioteca específica de React que se encarga de manipular el DOM (Document Object Model) en una aplicación web desarrollada con React.
+
+#### ¿Qué es el DOM?
+
+El DOM es una representación en forma de árbol de la estructura de un documento HTML o XML. Cada elemento en una página web, como etiquetas `<div>`, `<p>`, `<span>`, etc., es un nodo en este árbol. El DOM es dinámico y puede ser modificado mediante scripts, como JavaScript.
+
+#### ¿Qué hace React DOM?
+
+React utiliza una abstracción llamada Virtual DOM para mejorar el rendimiento de las actualizaciones en la interfaz de usuario. Cuando se realizan cambios en los componentes de React, en lugar de actualizar directamente el DOM del navegador, React crea una representación virtual del DOM en memoria. Luego, compara este Virtual DOM con el DOM real y determina los cambios mínimos necesarios para actualizar el DOM real de manera eficiente.
+
+React DOM es la implementación específica de React para interactuar con el DOM del navegador. Se encarga de traducir los cambios en el Virtual DOM a operaciones de manipulación del DOM real. Esto incluye la creación, actualización y eliminación de elementos DOM según sea necesario para reflejar el estado actual de los componentes de React.
+
+#### Uso de React DOM
+
+Para utilizar React DOM en una aplicación React, primero necesitas importar la biblioteca:
+
+```javascript
+import ReactDOM from 'react-dom';
+```
+```jsx
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+#### Usar las rutas dentro de la app : 
+
+```jsx
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <BrowserRouter>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+    ,
+  </BrowserRouter>
+);
+
+```
 
 
