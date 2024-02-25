@@ -96,27 +96,83 @@
 
 // INTERFACES 
 
-interface Programador {
-  nombre:string,
-  tecnologias: string[],
-  tomarmates: boolean | null
-}
-let dev:Programador = {
-  nombre: 'linus torvalds',
-  tecnologias: ['linux'],
-  tomarmates:true
-}
+// interface Programador {
+//   nombre:string,
+//   tecnologias: string[],
+//   tomarmates: boolean | null
+// }
+// let dev:Programador = {
+//   nombre: 'linus torvalds',
+//   tecnologias: ['linux'],
+//   tomarmates:true
+// }
 
 
-let dev2: Programador = {
-  nombre:'federico',
-  tecnologias:['html', 'COBOL'],
-  tomarmates: null,
- }
+// let dev2: Programador = {
+//   nombre:'federico',
+//   tecnologias:['html', 'COBOL'],
+//   tomarmates: null,
+//  }
 
 
-function enviarCurriculums(programador:Programador) {
-  console.log(`este CV es de ${programador.nombre}`)
-}
+// function enviarCurriculums(programador:Programador) {
+//   console.log(`este CV  es de ${programador.nombre}`)
+// }
 
-enviarCurriculums(dev2)
+// enviarCurriculums(dev2)
+
+
+// CLASES Y POO 
+// siempre va ; en las clases
+// class Pelicula{
+//   nombre?:string;
+//   protagonista?:string[];
+//   actores?:string[];
+//   // metodos
+//   proyectar(){
+//     console.log(`La pelicula ${this.nombre} esta siendo proyectada`)
+//   }
+
+//   // constructor
+//   constructor(nombre:string,protagonista:string[],actores:string[]){
+//     this.nombre = nombre,
+//     this.protagonista = protagonista,
+//     this.actores = actores
+//   }
+
+// }
+
+// // instancia vacia de pelicula
+// //const pelicula = new Pelicula()
+
+// //pelicula.proyectar()
+
+// const pelicula = new Pelicula('Barbie',['barbie','ken'],['ryan','margot'])
+// const pelicula2 = new Pelicula('ni idea',['pedro','juan'],['tuvieja','blablabla'])
+
+// console.log(pelicula2)
+
+
+
+// ENCAPSULAMIENTO 
+// generico (para pasarle un tipo de dato)
+// class Sorteo<T>{
+//   private ticket?:T;
+  
+//   constructor(private nombre:string){}
+  
+//   setNumero(ticket:T){
+//     this.ticket = ticket
+//   }
+//   getNumero(){
+//     return this.ticket
+//   }
+
+//   public sortear():string{
+//     return `Para ${this.nombre} el ticket es ${this.ticket}`
+//   }
+// }
+
+// let sorteo = new Sorteo<number>('Sergi Code')
+// sorteo.setNumero(13)
+// console.log(sorteo.sortear())

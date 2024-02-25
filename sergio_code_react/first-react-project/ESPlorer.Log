@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2024-02-04T20:59:24.750452280Z</date>
+  <millis>1707080364750</millis>
+  <nanos>452280</nanos>
+  <sequence>4</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>LAFcom.sun.java.swing.plaf.motif.MotifLookAndFeel</message>
+</record>
+<record>
+  <date>2024-02-04T20:59:24.757858739Z</date>
+  <millis>1707080364757</millis>
+  <nanos>858739</nanos>
+  <sequence>5</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>LAFjavax.swing.plaf.nimbus.NimbusLookAndFeel</message>
+</record>
+<record>
+  <date>2024-02-04T20:59:24.762141604Z</date>
+  <millis>1707080364762</millis>
+  <nanos>141604</nanos>
+  <sequence>6</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>LAFjavax.swing.plaf.metal.MetalLookAndFeel</message>
+</record>
+<record>
+  <date>2024-02-04T20:59:24.764561029Z</date>
+  <millis>1707080364764</millis>
+  <nanos>561029</nanos>
+  <sequence>7</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>LAFcom.sun.java.swing.plaf.gtk.GTKLookAndFeel</message>
+</record>
+<record>
+  <date>2024-02-04T20:59:24.836653580Z</date>
+  <millis>1707080364836</millis>
+  <nanos>653580</nanos>
+  <sequence>8</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>Load saved settings: Firmware:NodeMCU</message>
+</record>
+<record>
+  <date>2024-02-04T20:59:24.981126813Z</date>
+  <millis>1707080364981</millis>
+  <nanos>126813</nanos>
+  <sequence>9</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>Snippets: loading...</message>
+</record>
+<record>
+  <date>2024-02-04T20:59:24.984125999Z</date>
+  <millis>1707080364984</millis>
+  <nanos>125999</nanos>
+  <sequence>10</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>Snippets load: Success.</message>
+</record>
+<record>
+  <date>2024-02-04T20:59:25.044979449Z</date>
+  <millis>1707080365044</millis>
+  <nanos>979449</nanos>
+  <sequence>11</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>Set new color theme: Success.</message>
+</record>
+<record>
+  <date>2024-02-04T20:59:25.051302335Z</date>
+  <millis>1707080365051</millis>
+  <nanos>302335</nanos>
+  <sequence>12</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>Load saved settings: DONE.</message>
+</record>
+<record>
+  <date>2024-02-04T20:59:25.054130813Z</date>
+  <millis>1707080365054</millis>
+  <nanos>130813</nanos>
+  <sequence>13</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>Snippets: loading...</message>
+</record>
+<record>
+  <date>2024-02-04T20:59:25.056212342Z</date>
+  <millis>1707080365056</millis>
+  <nanos>212342</nanos>
+  <sequence>14</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>Snippets load: Success.</message>
+</record>
+<record>
+  <date>2024-02-04T20:59:25.963306069Z</date>
+  <millis>1707080365963</millis>
+  <nanos>306069</nanos>
+  <sequence>15</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>Scan system...</message>
+</record>
+<record>
+  <date>2024-02-04T20:59:26.034169272Z</date>
+  <millis>1707080366034</millis>
+  <nanos>169272</nanos>
+  <sequence>16</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>found /dev/ttyS0</message>
+</record>
+<record>
+  <date>2024-02-04T20:59:26.036249210Z</date>
+  <millis>1707080366036</millis>
+  <nanos>249210</nanos>
+  <sequence>17</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>found last saved serial port /dev/ttyUSB0</message>
+</record>
+<record>
+  <date>2024-02-04T20:59:26.038360510Z</date>
+  <millis>1707080366038</millis>
+  <nanos>360510</nanos>
+  <sequence>18</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>found /dev/ttyUSB1</message>
+</record>
+<record>
+  <date>2024-02-04T20:59:26.046121662Z</date>
+  <millis>1707080366046</millis>
+  <nanos>121662</nanos>
+  <sequence>19</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>Scan done.</message>
+</record>
+<record>
+  <date>2024-02-04T20:59:26.791958041Z</date>
+  <millis>1707080366791</millis>
+  <nanos>958041</nanos>
+  <sequence>20</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>FileTab cleared: Success.</message>
+</record>
+<record>
+  <date>2024-02-04T20:59:26.794518717Z</date>
+  <millis>1707080366794</millis>
+  <nanos>518717</nanos>
+  <sequence>21</sequence>
+  <logger>ESPlorer.ESPlorer</logger>
+  <level>INFO</level>
+  <class>ESPlorer.ESPlorer</class>
+  <method>log</method>
+  <thread>18</thread>
+  <message>File close: Success.</message>
+</record>
+</log>
